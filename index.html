@@ -3,7 +3,105 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title></title>
+  <title>DigitalOcean AI</title>
+  <link rel="icon" href="favicon.ico" />
+  <link rel="stylesheet" href="styles.css" />
+  <script src="theme.js"></script>
+  <style>
+    /* landing page: the numbered-row design from the old instructions page, grouped by what a visitor wants to do */
+    main.home { max-width: 1400px; align-items: stretch; }
+    .home .layout { display: grid; grid-template-columns: 1fr minmax(0, 924px) 1fr; margin-top: 24px; }
+    .home .steps { grid-column: 2; list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 4px; }
+    .home .group { margin: 28px 24px 4px; font: 600 13px var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--dim-text); }
+    .home .group:first-child { margin-top: 0; }
+    .home .step { padding: 8px 24px; }
+    .home .row { display: flex; align-items: center; gap: 20px; }
+    /* solid disc with the number cut out in the page background */
+    .home .n { flex: none; width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; font: 700 20px var(--mono); background: var(--bright); color: var(--bg); }
+    .home .text { flex: 1; font-size: 20px; line-height: 1.4; color: var(--bright); }
+    .home .text a { color: inherit; text-decoration: none; }
+    .home .text a:hover, .home .text a:focus-visible { text-decoration: underline; text-underline-offset: 3px; outline: none; }
+    /* (i): round vector icon on the right; hover or keyboard focus opens the detail */
+    .home .i { flex: none; width: 30px; height: 30px; padding: 0; background: transparent; border: 0; color: var(--dim-text); cursor: help; transition: color .2s; }
+    .home .i svg { width: 100%; height: 100%; display: block; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; }
+    .home .i .dot { fill: currentColor; stroke: none; }
+    .home .i:is(:focus-visible), .home .step.open .i { color: var(--bright); outline: none; }
+    @media (hover: hover) { .home .i:hover { color: var(--bright); } }
+    .home .detail { max-height: 0; overflow: hidden; opacity: 0; font-size: 16px; line-height: 1.55; color: var(--dim-text); margin-left: 64px; margin-right: 50px; transition: max-height .35s, opacity .25s, margin-top .35s; }
+    /* mouse: hover opens it; keyboard: focus opens it; touch: a tap toggles .open (hover is unreliable on phones) */
+    .home .step:is(.open, :has(.i:focus-visible)) .detail { max-height: 420px; opacity: 1; margin-top: 14px; }
+    @media (hover: hover) { .home .step:has(.i:hover) .detail { max-height: 420px; opacity: 1; margin-top: 14px; } }
+    .home .detail p { margin: 0; padding: 12px 16px; border: 1px dashed var(--mid-border); border-radius: 10px; }
+    .home .detail a { color: var(--bright); text-decoration: underline; text-underline-offset: 3px; white-space: nowrap; }
+    @media (max-width: 1240px) { .home .layout { display: flex; flex-direction: column; } }
+    @media (max-width: 600px) {
+      .home .i { width: 36px; height: 36px; margin: -3px; }
+      .home .group { margin-left: 16px; margin-right: 16px; }
+      .home .step { padding: 12px 16px; }
+      .home .row { gap: 12px; }
+      .home .n { width: 34px; height: 34px; font-size: 16px; }
+      .home .text { font-size: 15px; }
+      .home .detail { font-size: 14px; margin-left: 0; margin-right: 0; }
+    }
+  </style>
 </head>
-<body></body>
+<body>
+  <main class="wide home">
+    <h1 class="title">DigitalOcean AI</h1>
+
+    <div class="layout">
+    <ol class="steps">
+      <li class="group">Understand the options</li>
+      <li class="step">
+        <div class="row"><span class="n">1</span>
+          <div class="text"><a href="ai-play.html">AI Play</a></div>
+          <button class="i" type="button" aria-label="More about AI Play"><svg viewBox="0 0 30 30"><circle cx="15" cy="15" r="13"/><circle class="dot" cx="15" cy="9.5" r="1.5"/><path d="M15 13.5v8"/></svg></button></div>
+        <div class="detail"><p>The three ways to run AI on DigitalOcean (GPU Droplets, Dedicated Inference and Serverless Inference) and who operates which layer. <a href="ai-play.html">Open →</a></p></div>
+      </li>
+
+      <li class="group">See how it works</li>
+      <li class="step">
+        <div class="row"><span class="n">2</span>
+          <div class="text"><a href="serverless-inference.html">Serverless Inference</a></div>
+          <button class="i" type="button" aria-label="More about Serverless Inference"><svg viewBox="0 0 30 30"><circle cx="15" cy="15" r="13"/><circle class="dot" cx="15" cy="9.5" r="1.5"/><path d="M15 13.5v8"/></svg></button></div>
+        <div class="detail"><p>Live demo. Send a real prompt and watch each stage of the request path light up as the reply streams. <a href="serverless-inference.html">Open →</a></p></div>
+      </li>
+      <li class="step">
+        <div class="row"><span class="n">3</span>
+          <div class="text"><a href="inference-router.html">Inference Router</a></div>
+          <button class="i" type="button" aria-label="More about Inference Router"><svg viewBox="0 0 30 30"><circle cx="15" cy="15" r="13"/><circle class="dot" cx="15" cy="9.5" r="1.5"/><path d="M15 13.5v8"/></svg></button></div>
+        <div class="detail"><p>How a prompt is classified into a task and routed to a model, with a fallback when nothing matches. <a href="inference-router.html">Open →</a></p></div>
+      </li>
+      <li class="step">
+        <div class="row"><span class="n">4</span>
+          <div class="text"><a href="managed-agents.html">Managed Agents</a></div>
+          <button class="i" type="button" aria-label="More about Managed Agents"><svg viewBox="0 0 30 30"><circle cx="15" cy="15" r="13"/><circle class="dot" cx="15" cy="9.5" r="1.5"/><path d="M15 13.5v8"/></svg></button></div>
+        <div class="detail"><p>How an agent runs on DigitalOcean: the harness, durable sessions, the action gateway and isolated credentials. <a href="managed-agents.html">Open →</a></p></div>
+      </li>
+
+      <li class="group">Build on DigitalOcean</li>
+      <li class="step">
+        <div class="row"><span class="n">5</span>
+          <div class="text"><a href="build-on-do.html">Build on DigitalOcean</a></div>
+          <button class="i" type="button" aria-label="More about Build on DigitalOcean"><svg viewBox="0 0 30 30"><circle cx="15" cy="15" r="13"/><circle class="dot" cx="15" cy="9.5" r="1.5"/><path d="M15 13.5v8"/></svg></button></div>
+        <div class="detail"><p>The DigitalOcean building blocks on one page: Droplets and Kubernetes, App Platform, databases, storage, Inference Engine and Managed Agents. <a href="build-on-do.html">Open →</a></p></div>
+      </li>
+    </ol>
+    </div>
+  </main>
+  <footer class="cellar">
+    <img class="do-logo" src="do_logo_horizontal_black.svg" alt="DigitalOcean" />
+  </footer>
+
+  <script>
+    /* tap an (i) to open or close its detail (phones have no hover) */
+    document.querySelectorAll(".home .i").forEach(function (b) {
+      b.setAttribute("aria-expanded", "false");
+      b.addEventListener("click", function () {
+        var li = b.closest(".step"), open = li.classList.toggle("open");
+        b.setAttribute("aria-expanded", open);
+      });
+    });
+  </script>
+</body>
 </html>
