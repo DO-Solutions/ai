@@ -1,7 +1,7 @@
 # DigitalOcean AI — visual explainers
 
-Static pages explaining DigitalOcean's AI products: Serverless Inference, the Inference Router,
-Managed Agents and building on DigitalOcean.
+A small set of visual explainers for DigitalOcean's AI products. Live at https://ai.digitalocean.solutions.
+
 Plain HTML/CSS/JS — no build step, no server-side code. Every page has a dark/light toggle.
 
 ## Pages
