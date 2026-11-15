@@ -6,32 +6,42 @@ Plain HTML/CSS/JS — no build step, no server-side code. Every page has a dark/
 
 ## Pages
 
-- `index.html` — landing page: a grouped list of every page below, one numbered row each, with a
+- `/` — landing page: a grouped list of every page below, one numbered row each, with a
   one-line description behind the (i) icon.
-- `ai-play.html` — where Serverless Inference sits in the DigitalOcean AI stack
+- `/ai-play/` — where Serverless Inference sits in the DigitalOcean AI stack
   (Droplets / Dedicated Inference / Serverless Inference). Links out to the live demo and the
   inference router diagram.
-- `build-on-do.html` — the DigitalOcean building blocks on one page (compute, App Platform,
+- `/build-on-do/` — the DigitalOcean building blocks on one page (compute, App Platform,
   databases, storage, Inference Engine, Managed Agents).
-- `managed-agents.html` — architecture of a Managed Agents run: harness, durable sessions,
+- `/managed-agents/` — architecture of a Managed Agents run: harness, durable sessions,
   action gateway, isolated credentials.
-- `serverless-inference.html` — live demo. Enter a DO model access key and a model (or
+- `/serverless-inference/` — live demo. Enter a DO model access key and a model (or
   `router:<name>`), press Enter; it makes a real streaming API call and lights up each
   request-path stage as the reply streams.
-- `inference-router.html` — static diagram of the Inference Router: a prompt is classified into
+- `/inference-router/` — static diagram of the Inference Router: a prompt is classified into
   a task, then routed to a model by a selection criterion, with a fallback for unmatched prompts.
   Hover a sample prompt to trace its path.
 
+## Layout
+
+Each page is a folder with an `index.html`, so the URLs have no `.html`. Shared files live in
+`assets/` (`styles.css`, `theme.js`, `app.js`, the logos); `favicon.ico` stays at the root
+because browsers ask for it there. Pages refer to everything by root-absolute paths
+(`/assets/styles.css`), so the site must be served from the root of a host.
+
+The old `*.html` addresses (for example `/ai-play.html`) redirect to the new paths. Those
+redirect rules are in the App Platform app spec, not in this repo.
+
 ## Run
 
-Serve over HTTP (a `file://` page can't `fetch`):
+Serve over HTTP from this folder (a `file://` page can't `fetch`, and the paths are root-absolute):
 
 ```bash
 python3 -m http.server 8000
 # open http://localhost:8000
 ```
 
-## Live demo (`serverless-inference.html`)
+## Live demo (`/serverless-inference/`)
 
 Three fields: model access key (kept only in your browser's `localStorage`), a model id or
 `router:<name>`, and a base URL (default `https://inference.do-ai.run/v1`). Type a prompt and
