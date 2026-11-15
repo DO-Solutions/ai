@@ -44,9 +44,9 @@
     .mars .you .mouth { fill: var(--bright); font: 700 16.4px var(--mono); letter-spacing: 3px; }
     /* deploy pill: quiet outline until hovered, so it doesn't outshine the diagram */
     .mars .you .sample { background: transparent; color: var(--dim-text); border-color: var(--dim-border); box-shadow: none; font-size: 12px; padding: 1px 10px; }
-    /* quiet link to the instructions page, top right (same dim style as the pill) */
-    .to-instr { position: absolute; top: 16px; right: 60px; font-size: 12px; color: var(--dim-text); text-decoration: none; border: 1px solid var(--dim-border); border-radius: 999px; padding: 1px 10px; transition: color .2s, border-color .2s; }
-    .to-instr:hover, .to-instr:focus-visible { color: var(--bright); border-color: var(--mid-border); }
+    /* quiet link back to the landing page, top right (same dim style as the pill) */
+    .to-home { position: absolute; top: 16px; right: 60px; font-size: 12px; color: var(--dim-text); text-decoration: none; border: 1px solid var(--dim-border); border-radius: 999px; padding: 1px 10px; transition: color .2s, border-color .2s; }
+    .to-home:hover, .to-home:focus-visible { color: var(--bright); border-color: var(--mid-border); }
     .mars .you .sample:hover, .mars .you .sample:focus-visible { color: var(--bright); border-color: var(--mid-border); box-shadow: none; transform: none; }
     .mars .row > .link-h { width: 84px; padding: 0 6px; height: var(--sh); margin-top: 0; }
     .mars .net .arr { opacity: 0; stroke: var(--bright); stroke-dasharray: 5 5; animation: mars-flow .6s linear infinite; transition: opacity .1s .1s; }   /* same delay in and out, so the line follows the blocks' 0.2s lift/drop */
@@ -69,7 +69,7 @@
   </style>
 </head>
 <body>
-  <a class="to-instr" href="instructions.html">Instructions →</a>
+  <a class="to-home" href="/">← All pages</a>
   <main class="wide">
     <h1 class="title">Build on DigitalOcean</h1>
 

@@ -1,21 +1,26 @@
-# Serverless Inference — visual explainers
+# DigitalOcean AI — visual explainers
 
-Static pages explaining DigitalOcean Serverless Inference and its Inference Router.
+Static pages explaining DigitalOcean's AI products: Serverless Inference, the Inference Router,
+Managed Agents and building on DigitalOcean.
 Plain HTML/CSS/JS — no build step, no server-side code. Every page has a dark/light toggle.
 
 ## Pages
 
-- `ai-play.html` — landing page: where Serverless Inference sits in the DigitalOcean AI stack
+- `index.html` — landing page: a grouped list of every page below, one numbered row each, with a
+  one-line description behind the (i) icon.
+- `ai-play.html` — where Serverless Inference sits in the DigitalOcean AI stack
   (Droplets / Dedicated Inference / Serverless Inference). Links out to the live demo and the
   inference router diagram.
+- `build-on-do.html` — the DigitalOcean building blocks on one page (compute, App Platform,
+  databases, storage, Inference Engine, Managed Agents).
+- `managed-agents.html` — architecture of a Managed Agents run: harness, durable sessions,
+  action gateway, isolated credentials.
 - `serverless-inference.html` — live demo. Enter a DO model access key and a model (or
   `router:<name>`), press Enter; it makes a real streaming API call and lights up each
   request-path stage as the reply streams.
 - `inference-router.html` — static diagram of the Inference Router: a prompt is classified into
   a task, then routed to a model by a selection criterion, with a fallback for unmatched prompts.
   Hover a sample prompt to trace its path.
-- `capacity.html` — internal sizing tool. Reads `tokenomics.csv`, which is git-ignored and not
-  published, so this page does not function in the public repo.
 
 ## Run
 
